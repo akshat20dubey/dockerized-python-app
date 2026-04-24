@@ -1,0 +1,20 @@
+name: Docker Build and Run
+
+on: [push]
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Step 1 - Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Step 2 - Build Docker Image
+        run: docker build -t dockerized-python-app .
+
+      - name: Step 3 - Verify Image Created
+        run: docker images
+
+      - name: Step 4 - Run Docker Container
+        run: docker run dockerized-python-app
